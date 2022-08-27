@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import coil.load
 import com.example.lesson09network.databinding.FragmentFirstBinding
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
@@ -42,7 +43,8 @@ class FragmentFirst : Fragment() {
                 enqueue(object : Callback<List<User>> {
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         if (response.isSuccessful) {
-
+                            val users = response.body() ?: return
+                            binding.imageView.load(users[0].avatarUrl)
                         } else {
                             handleException(HttpException(response))
                         }
