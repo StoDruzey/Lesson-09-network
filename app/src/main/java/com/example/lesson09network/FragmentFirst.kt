@@ -1,9 +1,13 @@
 package com.example.lesson09network
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import coil.load
 import com.example.lesson09network.databinding.FragmentFirstBinding
@@ -14,6 +18,12 @@ class FragmentFirst : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = requireNotNull(_binding)
+//to request and check permisssion:
+//    private val launcher = registerForActivityResult(
+//        ActivityResultContracts.RequestPermission()
+//    ) { isGranted ->
+//
+//    }
 
     private var currentRequest: Call<List<User>>? = null
 
@@ -44,7 +54,7 @@ class FragmentFirst : Fragment() {
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         if (response.isSuccessful) {
                             val users = response.body() ?: return
-                            binding.imageView.load(users[0].avatarUrl)
+                            binding.imageView.load(users[5].avatarUrl)
                         } else {
                             handleException(HttpException(response))
                         }
@@ -54,14 +64,20 @@ class FragmentFirst : Fragment() {
                         if (!call.isCanceled) {
                             handleException(t)
                         }
-                        println()
                     }
                 })
             }
+//to check permission: method checkSelfPermission returns int. It is necessary to compare with constant of PackageManager
+        ContextCompat
+            .checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
 
         with(binding) {
             button.setOnClickListener {
-
+//to request permisssion:
+//                launcher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
             }
         }
     }
