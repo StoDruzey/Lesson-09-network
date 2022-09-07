@@ -1,4 +1,4 @@
-package com.example.lesson09networkToolbarMenu
+package com.example.lesson_10_network_Toolbar_Menu
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.example.lesson09networkToolbarMenu.databinding.FragmentSecondBinding
+import com.example.lesson_10_network_Toolbar_Menu.databinding.FragmentSecondBinding
 
 class FragmentSecond : Fragment() {
     private var _binding: FragmentSecondBinding? = null

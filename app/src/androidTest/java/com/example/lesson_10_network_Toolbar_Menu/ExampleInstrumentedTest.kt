@@ -1,4 +1,4 @@
-package com.example.lesson09networkToolbarMenu
+package com.example.lesson_10_network_Toolbar_Menu
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

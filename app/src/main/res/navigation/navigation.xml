@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/first_fragment"
-        android:name="com.example.lesson09networkToolbarMenu.FragmentFirst"
+        android:name="com.example.lesson_10_network_Toolbar_Menu.FragmentFirst"
         tools:layout="@layout/fragment_first">
 
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/second_fragment"
-        android:name="com.example.lesson09networkToolbarMenu.FragmentSecond"
+        android:name="com.example.lesson_10_network_Toolbar_Menu.FragmentSecond"
         tools:layout="@layout/fragment_second">
 
         <argument
