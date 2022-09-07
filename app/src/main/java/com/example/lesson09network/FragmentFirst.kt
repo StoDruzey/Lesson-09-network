@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.example.lesson09network.databinding.FragmentFirstBinding
 import retrofit2.*
@@ -54,7 +55,7 @@ class FragmentFirst : Fragment() {
                     override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                         if (response.isSuccessful) {
                             val users = response.body() ?: return
-                            binding.imageView.load(users[5].avatarUrl)
+                            binding.imageView.load(users[6].avatarUrl)
                         } else {
                             handleException(HttpException(response))
                         }
@@ -67,17 +68,13 @@ class FragmentFirst : Fragment() {
                     }
                 })
             }
-//to check permission: method checkSelfPermission returns int. It is necessary to compare with constant of PackageManager
-        ContextCompat
-            .checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-
         with(binding) {
             button.setOnClickListener {
-//to request permisssion:
-//                launcher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+//                toolbar.menu
+//                toolbar.inflateMenu(R.menu.menu_toolbar) //for processing menu toolbar
+//                toolbar.setNavigationOnClickListener {
+//                    findNavController().navigateUp() //for processing button "back"
+//                }
             }
         }
     }
